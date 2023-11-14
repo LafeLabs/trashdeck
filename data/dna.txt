@@ -2,6 +2,9 @@
     "html": [
         "README.md",
         "fork.html",
+        "freeclothes.html",
+        "freemedia.html",
+        "freestuff.html",
         "geometron.html",
         "geometron.js",
         "index.html",
@@ -10,6 +13,7 @@
         "qrcode.html",
         "readme.html",
         "readmeeditor.html",
+        "rideshare.html",
         "squares.html",
         "trashmagic.css",
         "trashmagic.js",
