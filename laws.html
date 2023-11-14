@@ -1,0 +1,160 @@
+ <!doctype html>
+<html>
+<head>
+ <!-- 
+PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+CC0
+
+
+LAWS OF GEOMETRON:
+
+EVERYTHING IS PHYSICAL
+EVERYTHING IS FRACTAL
+EVERYTHING IS RECURSIVE
+
+NO MONEY
+NO MINING 
+NO PROPERTY
+
+LOOK AT THE INSECTS
+LOOK AT THE FUNGI
+LANGUAGE IS HOW THE MIND PARSES REALITY
+
+
+LAWS OF TRASH MAGIC:
+
+EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW
+MAKE EVERYTHING FROM TRASH AND WHAT WE CAN GROW 
+EVERYTHING IS SELF-REPLICATING MEDIA
+
+LAWS OF QNS:
+
+EVERYTHING IS AN EFFECTS PEDAL
+EVERYTHING LIVES IN A WEB BROWSER
+EVERYTHING IS PUBLIC DOMAIN
+
+
+-->
+
+<!--Stop Google:-->
+<META NAME="robots" CONTENT="noindex,nofollow">
+    
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAP//AP///wANAP8A5Dz6ABueRwAAt/8A6BonABo86AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAREREREREREREREAAAEREREREQCIgREREd3dwAAB3d3d3d3d3d3d3d3d3d3d3d3d3VVVVVVVQAFVVAAVVVQIiBRAiIBEQIAIBECAAERAgAgFgIABmYCIiBmAiIGZgIiIGYCIgZmYCIAaIAAMzMzAAiIiIiIiIiIiIiIiIiIiIiIgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" rel="icon" type="image/x-icon" />
+    
+<!--
+ace.js project home:
+https://ace.c9.io/
+
+list of languages:
+https://cloud9-sdk.readme.io/docs/language-mode
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        processClass: "mathjax",
+        ignoreClass: "no-mathjax"
+        }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+        -->    
+
+<title>QNS Laws</title>
+
+</head>
+<body>
+
+<a id = "prevlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/left-arrow.svg"/>    
+</a>
+
+<a id = "nextlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
+</a>
+
+<div id = "squarebox">
+    <h1>Laws of QNS</h1>
+
+<ul>
+    <li>
+        Everything is an <a href = "https://en.wikipedia.org/wiki/Effects_unit">effects pedal</a></li>
+    <li>
+        Everything is <a href = "https://en.wikipedia.org/wiki/Public_domain">public domain</a>
+    </li>
+    <li>
+        Everything lives in a <a href = "https://en.wikipedia.org/wiki/Web_browser">web browser</a>
+    </li>
+</ul>
+
+</div>
+<script>
+
+squaresize = 700;
+margin = 100;
+if(innerWidth > innerHeight){
+    squaresize = innerHeight;
+    margin = (innerWidth - squaresize)/2;
+    document.getElementById("squarebox").style.left = margin.toString() + "px";
+    document.getElementById("squarebox").style.top = "0px";    
+}
+else{
+    squaresize = innerWidth;
+    margin = (innerHeight - squaresize)/2;
+}
+
+document.getElementById("squarebox").style.width = squaresize.toString() + "px";
+document.getElementById("squarebox").style.height = (squaresize).toString() + "px";
+
+
+
+</script>
+<style>
+a{
+    color:blue;
+}
+body{
+    overflow:hidden;
+    font-family:Arial;
+}
+h1,h2{
+    text-align:center;
+}
+#squarebox{
+    position:absolute;
+    background-color:white;
+    padding:1em 1em 1em 1em;
+    font-size:3em;
+}
+#prevlink{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+}
+#prevlink img{
+    width:100%;
+}
+#nextlink{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:100px;
+}
+#nextlink img{
+    width:100%;
+}
+
+</style>
+
+</body>
+</html>

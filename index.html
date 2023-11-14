@@ -1,0 +1,255 @@
+ <!doctype html>
+<html>
+<head>
+ <!-- 
+PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
+
+CC0
+
+
+LAWS OF GEOMETRON:
+
+EVERYTHING IS PHYSICAL
+EVERYTHING IS FRACTAL
+EVERYTHING IS RECURSIVE
+
+NO MONEY
+NO MINING 
+NO PROPERTY
+
+LOOK AT THE INSECTS
+LOOK AT THE FUNGI
+LANGUAGE IS HOW THE MIND PARSES REALITY
+
+
+LAWS OF TRASH MAGIC:
+
+EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW
+MAKE EVERYTHING FROM TRASH AND WHAT WE CAN GROW 
+EVERYTHING IS SELF-REPLICATING MEDIA
+
+LAWS OF QNS:
+
+EVERYTHING IS AN EFFECTS PEDAL
+EVERYTHING LIVES IN A WEB BROWSER
+EVERYTHING IS PUBLIC DOMAIN
+
+
+-->
+
+<!--Stop Google:-->
+<META NAME="robots" CONTENT="noindex,nofollow">
+    
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4A8AAO/vAADqrwAA6q8AAOqvAADqrwAA6q8AAOqvAADqrwAA7+8AAMAHAADf9wAAwAcAAPu/AAD4PwAA" rel="icon" type="image/x-icon">
+    
+<!--
+ace.js project home:
+https://ace.c9.io/
+
+list of languages:
+https://cloud9-sdk.readme.io/docs/language-mode
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        processClass: "mathjax",
+        ignoreClass: "no-mathjax"
+        }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+        -->    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<title>TRASHDECK</title>
+
+</head>
+<body>
+
+<a id = "prevlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/left-arrow.svg"/>    
+</a>
+
+<a id = "nextlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
+</a>
+<div id="editor" contenteditable="true" spellcheck="false"></div>
+
+<div id = "scroll">
+   <p>scroll</p>
+</div>
+
+<div id = "squarebox">
+<!--<square>-->
+    <h1>TRASHDECK</h1>
+
+    <ul>
+        <li>
+                <a href = "webeditor.html">CODE EDITOR</a>
+        </li>
+    </ul>
+
+<!--</square>-->
+</div>
+<script>
+
+squaresize = 700;
+margin = 100;
+if(innerWidth > innerHeight){
+    squaresize = innerHeight;
+    margin = (innerWidth - squaresize)/2;
+    document.getElementById("squarebox").style.left = margin.toString() + "px";
+    document.getElementById("squarebox").style.top = "0px";    
+
+    document.getElementById("editor").style.right = (squaresize + margin).toString() + "px";
+    document.getElementById("editor").style.top = "150px";
+    document.getElementById("scroll").style.top = "150px";
+    document.getElementById("scroll").style.left = (squaresize + margin).toString() + "px";        
+}
+else{
+    squaresize = innerWidth;
+    margin = (innerHeight - squaresize)/2;
+    
+    document.getElementById("editor").style.right = "51%";
+    document.getElementById("editor").style.top = (squaresize + margin).toString() + "px";
+    document.getElementById("scroll").style.top = (squaresize + margin).toString() + "px";
+    document.getElementById("scroll").style.left = "51%"; 
+}
+
+document.getElementById("squarebox").style.width = squaresize.toString() + "px";
+document.getElementById("squarebox").style.height = (squaresize).toString() + "px";
+
+editor = ace.edit("editor");
+editor.setTheme("ace/theme/github");
+//editor.setTheme("ace/theme/vibrant_ink");
+editor.getSession().setMode("ace/mode/html");
+editor.getSession().setUseWrapMode(true);
+editor.$blockScrolling = Infinity;
+//editor.setTheme("ace/theme/vibrant_ink");
+editor.setTheme("ace/theme/github");
+currentFile = "index.html";
+var httpc = new XMLHttpRequest();
+httpc.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+        filedata = this.responseText;
+        editor.setValue(filedata);
+        setmode();
+    }
+};
+httpc.open("GET", "fileloader.php?filename=" + currentFile, true);
+httpc.send();
+
+document.getElementById("editor").onkeyup = function(){
+    data = encodeURIComponent(editor.getSession().getValue());
+    var httpc = new XMLHttpRequest();
+    var url = "filesaver.php";        
+    httpc.open("POST", url, true);
+    httpc.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+    httpc.send("data="+data+"&filename="+currentFile);//send text to filesaver.php
+    var fileType = currentFile.split("/")[0]; 
+    var fileName = currentFile.split("/")[1];
+}
+
+function setmode(){
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".py"){
+        editor.getSession().setMode("ace/mode/python");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".txt"){
+        editor.getSession().setMode("ace/mode/text");
+    }    
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".md"){
+        editor.getSession().setMode("ace/mode/markdown");
+    }
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".tex"){
+        editor.getSession().setMode("ace/mode/latex");
+    }
+    if(currentFile.substring(currentFile.length-3,currentFile.length) == ".js"){
+        editor.getSession().setMode("ace/mode/javascript");
+    }    
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".ino"){
+        editor.getSession().setMode("ace/mode/java");
+    }   
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".css"){
+        editor.getSession().setMode("ace/mode/css");
+    }       
+    if(currentFile.substring(currentFile.length-4,currentFile.length) == ".php"){
+        editor.getSession().setMode("ace/mode/php");
+    }       
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".html"){
+        editor.getSession().setMode("ace/mode/html");
+    }   
+    if(currentFile.substring(currentFile.length-5,currentFile.length) == ".json"){
+        editor.getSession().setMode("ace/mode/json");
+    }       
+    
+}
+</script>
+<style>
+a{
+    color:blue;
+}
+body{
+    overflow:hidden;
+    font-family:Arial;
+}
+h1,h2{
+    text-align:center;
+}
+#squarebox{
+    position:absolute;
+    background-color:white;
+    padding:1em 1em 1em 1em;
+    font-size:3em;
+}
+#prevlink{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+}
+#prevlink img{
+    width:100%;
+}
+#nextlink{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:100px;
+}
+#nextlink img{
+    width:100%;
+}
+
+#editor{
+    position:absolute;  
+    left:10px;
+    bottom:10px;
+}
+#scroll{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    padding:1em 1em 1em 1em;
+    overflow:scroll;
+}
+
+#scroll img{
+    max-width:80%;
+    display:block;
+    margin:auto;
+    margin-top:1em;
+    border:solid;
+}
+</style>
+
+</body>
+</html>
