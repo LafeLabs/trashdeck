@@ -10,6 +10,7 @@
         "qrcode.html",
         "readme.html",
         "readmeeditor.html",
+        "squares.html",
         "trashmagic.css",
         "trashmagic.js",
         "webdestroyer.html",
