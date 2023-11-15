@@ -7,7 +7,7 @@ PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
 CC0
 
 
-LAW OF GEOMETRON:
+LAWS OF GEOMETRON:
 
 EVERYTHING IS PHYSICAL
 EVERYTHING IS FRACTAL
@@ -22,13 +22,13 @@ LOOK AT THE FUNGI
 LANGUAGE IS HOW THE MIND PARSES REALITY
 
 
-LAW OF TRASH MAGIC:
+LAWS OF TRASH MAGIC:
 
 EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW
 MAKE EVERYTHING FROM TRASH AND WHAT WE CAN GROW 
 EVERYTHING IS SELF-REPLICATING MEDIA
 
-LAW OF QNS:
+LAWS OF QNS:
 
 EVERYTHING IS AN EFFECTS PEDAL
 EVERYTHING LIVES IN A WEB BROWSER
@@ -44,6 +44,14 @@ EVERYTHING IS PUBLIC DOMAIN
     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4A8AAO/vAADqrwAA6q8AAOqvAADqrwAA6q8AAOqvAADqrwAA7+8AAMAHAADf9wAAwAcAAPu/AAD4PwAA" rel="icon" type="image/x-icon">
     
 <!--
+ace.js project home:
+https://ace.c9.io/
+
+list of languages:
+https://cloud9-sdk.readme.io/docs/language-mode
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
 <script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
@@ -78,31 +86,24 @@ EVERYTHING IS PUBLIC DOMAIN
 
 <div id = "qrcode"></div>
 
-<div style = "display:none" id = "scroll">
-
-</div>
 
 <div id = "squarebox">
     <img id = "mainimage"/>
     <div id = "square">
-        <h1>TRASHDECK</h1>
+        <h1>FREE FOOD!</h1>
+    
         <ul>
             <li>
-                    <a href = "webeditor.html">CODE EDITOR!</a>
-            </li>
-            <li><A href = "motd.html">MESSAGE OF THE DAY!</A></li>
-            <li>
-                <a href = "squares.html">INTERNET OF SQUARES!</a>
+                FIND FREE FOOD RESOURCES AND WASTE STREAMS
             </li>
             <li>
-                    <a href = "trashlaws.html">LAW OF TRASH!</a>
+                DISSEMINATE, SHARE, DELIVER
             </li>
             <li>
-                <a href = "https://trashbook.trashrobot.org">TRASHBOOK</a>
+                GROW OUR OWN
             </li>
-            <li>
-                    <a href = "geometronlaws.html">LAW OF GEOMETRON!</a>
-            </li>
+            <LI>FREE SOLAR POWERED TRASH TACOS!</LI>
+
         </ul>
         
     </div>
@@ -117,16 +118,11 @@ if(innerWidth > innerHeight){
     document.getElementById("squarebox").style.left = margin.toString() + "px";
     document.getElementById("squarebox").style.top = "0px";    
 
-
-    document.getElementById("scroll").style.top = "150px";
-    document.getElementById("scroll").style.left = (squaresize + margin).toString() + "px";        
 }
 else{
     squaresize = innerWidth;
     margin = (innerHeight - squaresize)/2;
     
-    document.getElementById("scroll").style.top = (squaresize + margin).toString() + "px";
-    document.getElementById("scroll").style.left = "51%"; 
 }
 
 document.getElementById("squarebox").style.width = squaresize.toString() + "px";
@@ -159,6 +155,10 @@ body{
 }
 h1,h2{
     text-align:center;
+    font-size:1em;
+}
+li{
+    font-size:0.75em;
 }
 .filelabel{
     display:none;
@@ -203,41 +203,6 @@ h1,h2{
     width:100%;
 }
 
-#editor{
-    position:absolute;  
-    left:10px;
-    bottom:10px;
-}
-#scroll{
-    position:absolute;
-    right:0px;
-    bottom:0px;
-    padding:1em 1em 1em 1em;
-    overflow:scroll;
-}
-#scroll img{
-    max-width:80%;
-    display:block;
-    margin:auto;
-    margin-top:1em;
-    border:solid;
-}
-.deletespan{
-    color:red;
-    border:solid;
-    border-color:red;
-    font-size:20px;
-    border-radius:10px;
-    padding: 5px 5px 5px 5px;
-    cursor:pointer;
-    position:relative;
-    top:50px;
-    left:75%;
-    
-}
-.deletespan:hover{
-    background-color:#ff000080;
-}
 #qrcode{
     position:absolute;
     left:10px;

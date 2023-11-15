@@ -1,20 +1,136 @@
-<!doctype html>
-<html lang="en">
-    <head>
-     <meta charset="utf-8"/>
-     <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADf+wAA3/sAAAfgAACv9QAAoAUAAK/1AACv9QAAqBUAAK/1AACoFQAAr/UAAKAFAACv9QAAB+AAAN/7AADf+wAA" rel="icon" type="image/x-icon" />
-        
-            <!--Stop Google:-->
-    <META NAME="robots" CONTENT="noindex,nofollow">
+ <!doctype html>
+<html>
+<head>
+ <!-- 
+PUBLIC DOMAIN, NO COPYRIGHTS, NO PATENTS.
 
-    </head>
-<body>
-    
-    <a id ="homelink" href = "index.html">HOME</a>
-    
-<textarea id = "maintextarea"></textarea>
+CC0
 
+
+LAW OF GEOMETRON:
+
+EVERYTHING IS PHYSICAL
+EVERYTHING IS FRACTAL
+EVERYTHING IS RECURSIVE
+
+NO MONEY
+NO MINING 
+NO PROPERTY
+
+LOOK AT THE INSECTS
+LOOK AT THE FUNGI
+LANGUAGE IS HOW THE MIND PARSES REALITY
+
+
+LAW OF TRASH MAGIC:
+
+EVERYTHING FREE FOR EVERYONE EVERYWHERE RIGHT NOW
+MAKE EVERYTHING FROM TRASH AND WHAT WE CAN GROW 
+EVERYTHING IS SELF-REPLICATING MEDIA
+
+LAW OF QNS:
+
+EVERYTHING IS AN EFFECTS PEDAL
+EVERYTHING LIVES IN A WEB BROWSER
+EVERYTHING IS PUBLIC DOMAIN
+
+
+-->
+
+<!--Stop Google:-->
+<META NAME="robots" CONTENT="noindex,nofollow">
+    
+    
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA4A8AAO/vAADqrwAA6q8AAOqvAADqrwAA6q8AAOqvAADqrwAA7+8AAMAHAADf9wAAwAcAAPu/AAD4PwAA" rel="icon" type="image/x-icon">
+    
+<!--
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.6.0/addons/p5.sound.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 <script>
+    MathJax.Hub.Config({
+        tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true,
+        processClass: "mathjax",
+        ignoreClass: "no-mathjax"
+        }
+    });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
+</script>
+         
+
+-->
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<title>MOTD</title>
+
+</head>
+<body>
+
+<a id = "prevlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/left-arrow.svg"/>    
+</a>
+
+<a id = "nextlink" href = "index.html">
+    <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
+</a>
+
+<div id = "qrcode"></div>
+
+<div style = "display:none" id = "scroll">
+
+</div>
+
+<div id = "squarebox">
+    <img id = "mainimage"/>
+    <div id = "square">
+        <h1>MESSAGE OF THE DAY</h1>
+
+        <textarea id = "maintextarea"></textarea>
+    </div>
+</div>
+<script>
+
+squaresize = 700;
+margin = 100;
+if(innerWidth > innerHeight){
+    squaresize = innerHeight;
+    margin = (innerWidth - squaresize)/2;
+    document.getElementById("squarebox").style.left = margin.toString() + "px";
+    document.getElementById("squarebox").style.top = "0px";    
+
+
+    document.getElementById("scroll").style.top = "150px";
+    document.getElementById("scroll").style.left = (squaresize + margin).toString() + "px";        
+}
+else{
+    squaresize = innerWidth;
+    margin = (innerHeight - squaresize)/2;
+    
+    document.getElementById("scroll").style.top = (squaresize + margin).toString() + "px";
+    document.getElementById("scroll").style.left = "51%"; 
+}
+
+document.getElementById("squarebox").style.width = squaresize.toString() + "px";
+document.getElementById("squarebox").style.height = (squaresize).toString() + "px";
+
+
+codesquaresize = 100;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
 
 currentfile = "motd.txt";
 
@@ -41,46 +157,123 @@ document.getElementById("maintextarea").onkeyup = function() {
     httpc.send("data="+data+"&filename=" + currentfile);//send text to filesaver.php
 }
 
-
-
 </script>
 <style>
+a{
+    color:blue;
+}
 body{
     overflow:hidden;
-    background-color:black;
+    font-family:Arial;
 }
-a{
+h1,h2{
+    text-align:center;
+    font-size:1em;
+}
+.filelabel{
+    display:none;
+}
+#squarebox{
+    position:absolute;
+    background-color:white;
+    font-size:3em;
+}
+#square{
+    position:absolute;
+    left:1em;
+    right:1em;
+    top:0px;
+    bottom:0px;
+    z-index:2;
+}
+#mainimage{
+    position:absolute;
+    z-index:1;
+    left:0px;
+    top:20%;
+    width:100%;
+}
+
+#prevlink{
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100px;
+}
+#prevlink img{
+    width:100%;
+}
+#nextlink{
+    position:absolute;
+    right:0px;
+    top:0px;
+    width:100px;
+}
+#nextlink img{
+    width:100%;
+}
+
+#editor{
+    position:absolute;  
+    left:10px;
+    bottom:10px;
+}
+#scroll{
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    padding:1em 1em 1em 1em;
+    overflow:scroll;
+}
+#scroll img{
+    max-width:80%;
+    display:block;
+    margin:auto;
+    margin-top:1em;
+    border:solid;
+}
+.deletespan{
+    color:red;
+    border:solid;
+    border-color:red;
+    font-size:20px;
+    border-radius:10px;
+    padding: 5px 5px 5px 5px;
+    cursor:pointer;
+    position:relative;
+    top:50px;
+    left:75%;
+    
+}
+.deletespan:hover{
+    background-color:#ff000080;
+}
+#qrcode{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    z-index:2;
 }
 #maintextarea{
     position:absolute;
-    left:10%;
-    right:10%;
-    top:10%;
-    bottom:10%;
-    width:80%;
-    height:75%;
+    left:1%;
+    right:5%;
+    top:15%;
+    bottom:5%;
+    width:90%;
+    height:65%;
     padding:1em 1em 1em 1em ;
     background-color:black;
     color:#00ff00;
     font-family:courier;
-    font-size:1.5em;
+    font-size:0.5em;
     overflow:scroll;
     border:solid;
-    border-color:#00ff00;
+    border-color:black;
     border-width:10px;
-    border-radius:2em;
+    border-radius:2em;    
 }
-#homelink{
-    position:absolute;
-    left:0px;
-    top:0px;
-    font-size:2em;
-    font-family:courier;
-    font-size:4em;
-    color:#ff2cb4;
-    
-}
+</style>
 
-        </style>
-    </body>
+</body>
 </html>

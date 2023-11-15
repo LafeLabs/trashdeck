@@ -63,7 +63,7 @@ EVERYTHING IS PUBLIC DOMAIN
 </script>
         -->    
 
-
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <title>SQUARES</title>
 
 </head>
@@ -76,6 +76,7 @@ EVERYTHING IS PUBLIC DOMAIN
 <a id = "nextlink" href = "index.html">
     <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
 </a>
+<div id = "qrcode"></div>
 
 <div id = "scroll">
     <form id = "uploadform" action="uploadimage.php" method="post" enctype="multipart/form-data">
@@ -306,9 +307,23 @@ document.getElementById("postbutton").onclick = function(){
 
     document.getElementById("scroll").insertBefore(newbox,document.getElementById("scroll").getElementsByClassName("imagebox")[0]);
     
-    
-    
 }
+
+codesquaresize = 100;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
 </script>
 <style>
 a{
@@ -410,6 +425,13 @@ main{
 }
 .deletespan:hover{
     background-color:#ff000080;
+}
+
+#qrcode{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    z-index:2;
 }
 </style>
 
