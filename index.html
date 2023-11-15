@@ -51,7 +51,6 @@ list of languages:
 https://cloud9-sdk.readme.io/docs/language-mode
 
 
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
@@ -67,9 +66,11 @@ https://cloud9-sdk.readme.io/docs/language-mode
         }
     });//			MathJax.Hub.Typeset();//tell Mathjax to update the math
 </script>
-        -->    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript" charset="utf-8"></script>
+         
 
+-->
+
+<script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <title>TRASHDECK</title>
 
 </head>
@@ -82,6 +83,8 @@ https://cloud9-sdk.readme.io/docs/language-mode
 <a id = "nextlink" href = "index.html">
     <img src = "https://raw.githubusercontent.com/LafeLabs/squares/main/trashmagic/right-arrow.svg"/>    
 </a>
+
+<div id = "qrcode"></div>
 <div style = "display:none" id="editor" contenteditable="true" spellcheck="false"></div>
 
 <div style = "display:none" id = "scroll">
@@ -142,7 +145,7 @@ else{
 
 document.getElementById("squarebox").style.width = squaresize.toString() + "px";
 document.getElementById("squarebox").style.height = (squaresize).toString() + "px";
-
+/*
 editor = ace.edit("editor");
 editor.setTheme("ace/theme/github");
 //editor.setTheme("ace/theme/vibrant_ink");
@@ -207,6 +210,8 @@ function setmode(){
     }       
     
 }
+*/
+
 
 squares = [];
 var httpc9 = new XMLHttpRequest();
@@ -260,6 +265,20 @@ var httpc9 = new XMLHttpRequest();
 };
 httpc9.open("GET", "dir.php?filename=trashmagic", true);
 httpc9.send();
+
+codesquaresize = 100;
+marginsize = 40;
+fontsize = 12;
+//globalurl = "http://www.trashrobot.org/qrcode.html";
+globalurl = window.location.href;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: globalurl,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
 
 
 </script>
@@ -351,6 +370,12 @@ h1,h2{
 }
 .deletespan:hover{
     background-color:#ff000080;
+}
+#qrcode{
+    position:absolute;
+    left:10px;
+    bottom:10px;
+    z-index:2;
 }
 </style>
 

@@ -9,6 +9,7 @@
         "geometron.js",
         "index.html",
         "laws.html",
+        "motd.html",
         "qrcode-page.html",
         "qrcode.html",
         "readme.html",
